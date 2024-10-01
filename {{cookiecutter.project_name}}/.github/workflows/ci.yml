@@ -1,0 +1,16 @@
+name: ci-py-lib
+on:
+  push:
+    branches:
+      - "**"
+    paths-ignore:
+      - .github/workflows/**
+      - "**.md"
+      - docs/**
+      - notebooks/**
+  workflow_dispatch: null
+  create: null
+jobs:
+  ci:
+    uses: Toyota-Motor-North-America/chofer-actions/.github/workflows/ci-py-lib.yml@v1
+    secrets: inherit

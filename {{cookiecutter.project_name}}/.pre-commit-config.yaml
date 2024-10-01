@@ -1,0 +1,29 @@
+repos:
+  - repo: local
+    hooks:
+      - id: auto-update-requirements-txt
+        name: updating-requirements-txt
+        description: Sync requirements.txt from pyproject.toml
+        entry: make requirements
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+      - id: linting
+        name: linting
+        description: Run isort black flake8 pylint
+        entry: bash -c "source .venv/bin/activate && make format"
+        language: python
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+      - id: small-tests
+        name: small-tests
+        description: Small-sized tests
+        entry: bash -c "source .venv/bin/activate && export PYTHONPATH=./src && make test-small"
+        language: python
+        pass_filenames: false
+        always_run: true
+        verbose: true
